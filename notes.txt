@@ -1,0 +1,7 @@
+get() - search () - by user, location, by hashtag - finding or compiling data
+
+
+post() - Tweeting, Retweeting, - making or changing data 
+
+stream() - constant socket connection, assign events to stream so code triggered when an event runs.
+Can use this to autoreply when people tweet etc
