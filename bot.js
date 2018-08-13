@@ -10,10 +10,11 @@ let config = require("./config")
 var T = new Twit(config);
 
 function newTweet(){
+  console.log(Word.prefix);
   console.log(Food.finalFood);
   console.log(Word.finalWord);
   let tweet = {
-    status: `${Food.finalFood} is ${Word.finalWord}`,
+    status: `${Word.prefix} ${Food.finalFood} is ${Word.finalWord}`,
   }
   T.post('statuses/update', tweet, tweeted);
   function tweeted(err, data, response){
@@ -24,7 +25,6 @@ function newTweet(){
       }
 }
 
-setTimeout(newTweet, 5000);
-
+setInterval(newTweet, 1000 * 2);
 
 
