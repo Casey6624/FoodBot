@@ -1,24 +1,26 @@
 let Dictionary = require("oxford-dictionary-api");
 
+var finalWord;
 let dict = new Dictionary("12507592", "09a5bf18ca95dcd078b79f0cf343633f")
 
-let words = ["delicious", "yummy", "scrumptious", "delightful"];
+// will have to check these adjectives to see if they're covered by the API
+let adjectives = ["delicious", "scrumptious", "delightful", "amazing"];
 
-let word = "Love";
+let wordIndex = Math.floor(Math.random() * adjectives.length);
+
+let word = adjectives[wordIndex];
 
 dict.find(word,function(error,data){ if(error) return console.log(error); 
 
-pulledSynonyms = data.results[0].lexicalEntries[0].entries[0].senses[0].synonyms;
+let pulledSynonyms = data.results[0].lexicalEntries[0].entries[0].senses[0].synonyms;
 
-objLength = Object.keys(pulledSynonyms).length;
+let objLength = Object.keys(pulledSynonyms).length;
 
-index = Math.floor(Math.random() * objLength);
+let objIndex = Math.floor(Math.random() * objLength);
 
-var key = Object.keys(pulledSynonyms)[index];
-value = pulledSynonyms[key]
+var key = Object.keys(pulledSynonyms)[objIndex];
+value = pulledSynonyms[key];
 
-let finalWord = value.text;
-
-export default finalWord;
-
+finalWord = value.text;
+module.exports.finalWord = finalWord;
 });
